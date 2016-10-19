@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="Sample.css">
+	<title>サンプル</title>
+<script type="text/javascript">
+	var rq;
+
+	function read() {
+		rq = new XMLHttpRequest();
+		rq.open("GET", "Sample.xml");
+		rq.onreadystatechange = receive;
+		rq.send(null);
+	}
+	function receive() {
+		if (rq.readyState == 4) {
+			var elm = document.getElementById("data");
+			if (rq.status == 200) {
+				var doc = rq.responseXML;
+				var list = doc.getElementsByTagName("car");
+				for (var i = 0; i < list.length; i++) {
+					var ch = list[i].childNodes;
+					for (var j = 0; j < ch.length; j++) {
+						elm.innerHTML += ch[j].textContent;
+					}
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<h1>商品の紹介</h1>
+<input type="button" value="読込" onclick="read()" />
+<div id="data"></div>
+</body>
+</html>

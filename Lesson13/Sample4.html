@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="Sample.css">
+	<title>サンプル</title>
+<script type="text/javascript">
+	var rq;
+
+	function read() {
+		rq = new XMLHttpRequest();
+		rq.open("POST", "Sample.json");
+		rq.onreadystatechange = receive;
+		rq.send(null);
+	}
+	function receive() {
+		if (rq.readyState == 4) {
+			var elm = document.getElementById("data");
+			if (rq.status == 200) {
+				var jdat = rq.responseText;
+				var dat = eval("(" + jdat + ")");
+				for (var i = 0; i < dat.length; i++) {
+					elm.innerHTML += dat[i].name + dat[i].price;
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<h1>商品の紹介</h1>
+<input type="button" value="読込" onclick="read()" />
+<div id="data"></div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="Sample.css">
+	<title>サンプル</title>
+<script type="text/javascript">
+	function add() {
+		var cars = document.getElementById('cars');
+		var elm = document.createElement('h3');
+		var txt = document.createTextNode("乗用車");
+		elm.appendChild(txt);
+		cars.appendChild(elm);
+	}
+	function del() {
+		var cars = document.getElementById('cars');
+		if (cars.lastChild != null) {
+			cars.removeChild(cars.lastChild);
+		}
+	}
+</script>
+</head>
+<meta charset="utf-8">
+<body>
+<h1>商品の紹介</h1>
+<input type="button" value="商品の追加" onclick="add()"/>
+<input type="button" value="商品の削除" onclick="del()">
+<dir id="cars"></dir>
+</body>
+</html>

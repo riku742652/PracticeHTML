@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<link rel="stylesheet" type="text/css" href="Sample.css">
+<head>
+	<title>サンプル</title>
+<script type="text/javascript">
+	function welcome() {
+		var b = document.getElementById('body');
+		var a = document.createElement("a");
+		var i = document.createElement("img");
+		a.setAttribute("href", "Sample1.html");
+		i.setAttribute("src", "car2.jpg")
+		a.appendChild(i);
+		b.appendChild(a);
+	}
+</script>
+</head>
+<meta charset="utf-8">
+<body id="body">
+<h1>商品の紹介</h1>
+<input type="button" value="追加" onclick="welcome()" />
+</body>
+</html>
